@@ -20,5 +20,5 @@ for i in target['items']:
 genredb = pd.DataFrame(film_genres, columns = ['genre1', 'genre2', 'genre3', 'genre4', 'gnere5'])
 
 resultdb = pd.concat([almostdb, genredb], axis=1, join="inner")
-resultdb.to_csv('Moviedb')
+resultdb.to_csv('Moviedb.csv')
 # print(resultdb)
