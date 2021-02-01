@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Sketch&family=News+Cycle&display=swap');
+/* font-family: 'Londrina Sketch', cursive;
+font-family: 'News Cycle', sans-serif; */
+
+.news-reader {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    grid-template-areas: 
+        "hd hd hd"
+        "st st as";
+    font-family: 'News Cycle', sans-serif;
+    font-size: 1.2rem;
+}
+
+h1 { 
+    grid-area: hd;
+    font-family: 'Londrina Sketch', cursive;
+    font-size: 10rem;
+    width: 100vw;
+    text-align: center;
+}
+
+aside { grid-area: as; }
+
+section { grid-area: st; }
+
+li { list-style: none; }
+
+li:hover { cursor: pointer; }
+
+img {
+    /* height: 60vh; */
+    width: 30vw;
+    margin: 2rem;
+    border: 10px solid black;
+}
+
+#feature {
+    padding: 2rem 10vw;
+    text-align: justify;
+}
+
+h3 { font-size: 2.2rem; }
+
+input, [type="submit"] { 
+    font-family: 'News Cycle',
+    sans-serif; background-color: wheat;
+    padding: 5px;
+}
+
+button, [type="submit"] { font-weight: 700; }
+
+input { border: none; }
+
+button { border: 2px solid black; }
+
+[type="submit"] { border-left: 1px dashed black; }
