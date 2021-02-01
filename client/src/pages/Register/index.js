@@ -65,10 +65,9 @@ class Register extends Component {
 
   render() {
     return (
-      <Jumbotron>
-        <h1 className="titleHabitHub">Welcome to Movie Matchmaker</h1>
-      <div className="formContainer">
-        <p> Create a new user:</p>
+      <div className="container main-form">
+      <div>
+        <p className="form-header">Create a new user:</p>
         <Form onSubmit={this.register}>
           <Form.Label>Username:</Form.Label>
           <Form.Control 
@@ -110,24 +109,27 @@ class Register extends Component {
             placeholder="Email"
           />
           <br />
-
-          <Button
-            id="registerBtn"
-            variant="info"
-            type="submit"
-            className={
-              (this.formIncomplete() ? "disabled" : "enabled"), "genButtons" }
-            disabled={this.formIncomplete()}
-          >
-            Submit details
-          </Button>
+          <div className="bottom-form">
+            <Button
+              id="registerBtn"
+              variant="info"
+              type="submit"
+              className={
+                (this.formIncomplete() ? "disabled" : "enabled"), "main-buttons" }
+              disabled={this.formIncomplete()}
+            >
+              Submit details
+            </Button>
+            <div className="redirect">
+              <p>Already have an account? Sign in here:</p>
+              <Button className="main-buttons" variant="info" onClick={this.redirect}>Log In</Button>
+            </div>
+          </div>
         </Form>
-        <label for="quitbtn">Already have an account? Sign in here:</label>
-        <Button id="quitbtn" className="genButtons" variant="info" onClick={this.redirect}>Log In</Button>
       </div>
         <p id="err"></p>
         <p id="success"></p>
-      </Jumbotron>
+      </div>
     );
   }
 }
