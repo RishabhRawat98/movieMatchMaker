@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { PrivateRoute, LoggedOutRoute } from "./components";
-import { Register, Login, MovieList, Swipe } from './pages';
+import { Welcome, Register, Login, MovieList, Swipe } from './pages';
 import { Header, Footer } from './layout';
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import jwt_decode from "jwt-decode";
 import "regenerator-runtime/runtime";
@@ -60,6 +61,7 @@ class App extends Component {
       <>
         <Header />
         <Switch>
+          <LoggedOutRoute exact path="/" isLoggedIn={this.state.isLoggedIn} component={Welcome} />
           <LoggedOutRoute path="/register" isLoggedIn={this.state.isLoggedIn} component={Register} />
           <LoggedOutRoute path="/login" isLoggedIn={this.state.isLoggedIn} login={this.login} component={Login} />
           <PrivateRoute path="/swipe" isLoggedIn={this.state.isLoggedIn} component={Swipe} />

@@ -25,10 +25,9 @@ class Login extends Component {
 
   render() {
     return (
-      <Jumbotron>         
-          <h1 className="">Welcome back to Movie Matchmaker</h1>
-          <div className="formContainer">  
-            <p> Enter your details here:</p>
+      <div className="container main-form">
+          <div>  
+            <p className="form-header"> Enter your details here:</p>
             <Form onSubmit={this.login}>
               <Form.Label>Email:</Form.Label>
               <Form.Control
@@ -50,13 +49,17 @@ class Login extends Component {
                 placeholder="Your password"
               />
               <br />
-              <Button className="genButtons" variant="info" type="submit" className={this.formIncomplete() ? 'disabled' : 'enabled'} disabled={this.formIncomplete()}>Log in</Button>
-              <label for="quitbtn">Don't have an account? Sign up here:</label>
-              <Button id="quitbtn" className="genButtons" variant="info" onClick={this.redirect}>Register</Button>
+              <div className="bottom-form">
+                <Button variant="info" type="submit" className={this.formIncomplete() ? 'disabled' : 'enabled', 'main-buttons'} disabled={this.formIncomplete()}>Log in</Button>
+                <div className="redirect">
+                  <p>Don't have an account? Sign up here:</p>
+                  <Button className="main-buttons" variant="info" onClick={this.redirect}>Register</Button>
+                </div>
+              </div>
             </Form>
           </div> 
             <p id="login"></p>  
-      </Jumbotron>
+      </div>
     );
   }
 }
