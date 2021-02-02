@@ -3,7 +3,7 @@ import React from 'react';
 const DislikeButton = () => {
     
     return (        
-        <input type="image" className="img-card" src="https://w7.pngwing.com/pngs/182/570/png-transparent-computer-icons-button-cross-on-a-red-circle-logo-sign-area.png" />
+        <input type="image" className="img-card redbtn" src="https://thumbs.dreamstime.com/b/cross-sign-element-cross-sign-element-red-icon-isolated-white-background-mark-graphic-design-round-volume-button-vote-130960555.jpg" />
     );
     
 }

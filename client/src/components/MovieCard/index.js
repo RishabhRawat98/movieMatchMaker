@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { LikeButton, SeenButton, WatchTrailer, DislikeButton } from '..';
+import { LikeButton, DislikeButton } from '..';
 
 class MovieCard extends Component {
 
@@ -7,16 +7,14 @@ class MovieCard extends Component {
 
     render() {
         return (
-                <div className="container">           
-                    <div id={this.props.movieID} className="card h-100">
+                <div className="container movie-card">           
+                    <div id={this.props.movieID} className="card">
                         <img src={this.props.movieImageURL} className="card-img-top" alt="Movie Photo"/>
                         <div className="card-body">
                             <h5 className="card-title">{this.props.movieTitle}</h5>
                             <p className="card-text">{this.props.movieBrief}</p>
-                            <div className="img-card-wrap">
-                                <LikeButton />
-                                <SeenButton />
-                                <WatchTrailer />
+                            <div className="card-buttons">
+                                <LikeButton />                                
                                 <DislikeButton />
                             </div>
                         </div>

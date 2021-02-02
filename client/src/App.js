@@ -15,7 +15,7 @@ class App extends Component {
 
     currentUser: {
       id: 0,
-      username: " ",
+      username: "Donald",
       email: " ",
       password: " ",
     },

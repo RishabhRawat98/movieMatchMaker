@@ -5,7 +5,7 @@ font-family: 'News Cycle', sans-serif; */
 
 html::after {
     content: "";
-    background: url(https://cdn.britannica.com/61/118661-050-6CAD9A11/Popcorn.jpg);
+    background: url('https://cdn.britannica.com/61/118661-050-6CAD9A11/Popcorn.jpg');
     opacity: 0.75;
     top: 0;
     left: 0;
@@ -18,7 +18,7 @@ html::after {
 }
 
 body {
-    overflow-x: hidden;
+    overflow: hidden;
     margin-bottom: 3rem;
     margin-top: 6rem;
     font-family: 'Poppins';
@@ -97,5 +97,52 @@ body {
 }
 
 .img-card {
-    width: 2vw;
+    width: 5vw;
+}
+
+.img-logout {
+    width: 3vw;
+}
+
+.top-buttons {
+    position: absolute;
+    top: 7vh;
+    right: 5vh;
+    display: flex;
+    align-items: center;
+}
+
+.user-welcome {
+    position: absolute;
+    top: 14vh;
+    left: 5vh;
+}
+
+.movie-card {
+    max-width: 45vh;
+    
+}
+
+.card-buttons {
+    position: relative;
+    top: -3vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-text {
+    font-size: 15px;
+    text-align: justify;
+    z-index: 200;
+}
+
+.redbtn {
+    width: 15vh;
+    margin-bottom: 0;
+}
+
+.card {
+    border: 5px solid;
+    border-image: linear-gradient(to right, darkred , black) 1 round;
 }
