@@ -64,8 +64,8 @@ class App extends Component {
           <LoggedOutRoute exact path="/" isLoggedIn={this.state.isLoggedIn} component={Welcome} />
           <LoggedOutRoute path="/register" isLoggedIn={this.state.isLoggedIn} component={Register} />
           <LoggedOutRoute path="/login" isLoggedIn={this.state.isLoggedIn} login={this.login} component={Login} />
-          <PrivateRoute path="/swipe" isLoggedIn={this.state.isLoggedIn} component={Swipe} />
-          <PrivateRoute path="/movielist" isLoggedIn={this.state.isLoggedIn} component={MovieList} />
+          <Route path="/swipe" isLoggedIn={this.state.isLoggedIn} username={this.state.currentUser.username} component={Swipe} />
+          <PrivateRoute path="/movielist" isLoggedIn={this.state.isLoggedIn} username={this.state.currentUser.username} component={MovieList} />
         </Switch>
         <Footer />
       </>

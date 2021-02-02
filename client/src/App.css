@@ -90,3 +90,12 @@ body {
     font-size: xx-large;
     font-weight: bolder;
 }
+
+.img-card-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-card {
+    width: 2vw;
+}
