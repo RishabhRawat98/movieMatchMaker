@@ -12,6 +12,7 @@ cors = flask_cors.CORS()
 # A generic user model that might be used by an app powered by flask-praetorian
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text)
     username = db.Column(db.Text, unique=True)
     password = db.Column(db.Text)
     roles = db.Column(db.Text)
@@ -60,9 +61,9 @@ cors.init_app(app)
 # Add users for the example
 with app.app_context():
     db.create_all()
-    if db.session.query(User).filter_by(username='Tara').count() < 1:
+    if db.session.query(User).filter_by(username='123@gmail.com').count() < 1:
         db.session.add(User(
-            username='Tara',
+            username='123@gmail.com',
             password=guard.hash_password('strongpassword'),
             roles='admin'
         ))
@@ -82,7 +83,7 @@ def login():
     issuing a JWT token.
     .. example::
        $ curl http://localhost:5000/api/login -X POST \
-         -d '{"username":"Tara","password":"strongpassword"}'
+         -d '{"username":"123@gmail.com","password":"strongpassword"}'
     """
     req = flask.request.get_json(force=True)
     username = req.get('username', None)
