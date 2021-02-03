@@ -217,12 +217,15 @@ span {
 }
 
 /* Movie Lists */
+.movie-lists:before, .movie-lists:after  {
+    content: "  ";
+}
 
 .movie-lists {
+    position: relative;
+    top: 10vh;
     display: flex;
-    flex-direction: row;
-    align-self: flex-end;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .list-elements {
@@ -230,4 +233,17 @@ span {
     flex-direction: column;
     align-self: flex-end;
     justify-content: flex-start;
+}
+
+.movie-lists:before, .movie-lists:after  {
+    content: none;
+}
+
+h3 {
+    background: -webkit-linear-gradient(left, black, darkred);
+    background: -o-linear-gradient(right, black, darkred);
+    background: -moz-linear-gradient(right, black, darkred);
+    background: linear-gradient(to right, black, darkred);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

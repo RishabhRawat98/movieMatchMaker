@@ -6,18 +6,24 @@
     <a href="{{ url_for('auth.logout') }}"><input type="image" src="{{ url_for('static', filename='logout.png') }}" class="img-logout"/></a>
   </div>
   <p class="form-header user-welcome">Hi {{ name }}, welcome back!</p>
-  <div class="movie-lists">
-    <div class="list-elements">Liked movies:</div>
+  <div class="movie-lists container main-form">
+    <div class="list-elements">
+      <h3><b><u>Liked movies</u></b></h3>
       <p>Movie 1</p>
       <p>Movie 2</p>
       <p>Movie 3</p>
-    <div class="list-elements">Disliked movies:</div>
+    </div>
+    <div class="list-elements">
+      <h3><b><u>Disliked movies</u></b></h3>
       <p>Movie 1</p>
       <p>Movie 2</p>
       <p>Movie 3</p>
-    <div class="list-elements">Recommended movies:</div>
+    </div>
+    <div class="list-elements">
+      <h3><b><u>Recommended movies</u></b></h3>
       <p>Movie 1</p>
       <p>Movie 2</p>
       <p>Movie 3</p>
+    </div>
   </div>
 {% endblock %}

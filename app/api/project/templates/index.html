@@ -4,10 +4,8 @@
 
 {% block content %}
   <h1 id="title">Welcome to Movie Matchmaker</h1>
-  <div id="welcome-buttons">            
-    {% if not current_user.is_authenticated %}
+  <div id="welcome-buttons">    
     <a href="{{ url_for('auth.signup') }}"><button class="main-buttons">Register</button></a>    
-    <a href="{{ url_for('auth.login') }}"><button class="main-buttons">Login</button></a>
-    {% endif %}
+    <a href="{{ url_for('auth.login') }}"><button class="main-buttons">Login</button></a>    
   </div>
 {% endblock %}
