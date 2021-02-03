@@ -3,10 +3,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  Flask Login Example
-</h1>
-<h2 class="subtitle">
-  Easy authentication and authorization in Flask.
-</h2>
+  <h1 id="title">Welcome to Movie Matchmaker</h1>
+  <div id="welcome-buttons">            
+    <button class="main-buttons"><Link to="/register">Register</Link></button>
+    <button class="main-buttons"><Link to="/login">Login</Link></button>
+  </div>
 {% endblock %}

@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&family=News+Cycle&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html::after {
+    content: "";
+    background: url('https://cdn.britannica.com/61/118661-050-6CAD9A11/Popcorn.jpg');
+    opacity: 0.75;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+    overflow: hidden;
+    margin-bottom: 3rem;
+    margin-top: 6rem;
+    font-family: 'Poppins';
+}
+
+#welcome-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+#title { 
+    grid-area: hd;
+    font-family: 'Londrina Solid', cursive;
+    font-size: 10rem;
+    width: 100vw;
+    text-align: center;
+    color: darkred;
+    -webkit-text-stroke: 5px black;
+}
+
+.main-buttons {
+	box-shadow:inset 0px 1px 0px 0px #f29c93;
+	background:linear-gradient(to bottom, #000000 5%, #ce0100 100%);
+	background-color:#000000;
+	border-radius:6px;
+	border:1px solid #d83526;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+    padding:6px 24px;
+    margin: 50px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+}
+.main-buttons:hover {
+	background:linear-gradient(to bottom, #ce0100 5%, #000000 100%);
+	background-color:#ce0100;
+}
+.main-buttons:active {
+	position:relative;
+	top:1px;
+}
+
+.main-form {
+    background-color: grey;
+    border: 2px solid darkgrey;
+    border-radius: 20px;
+    margin-bottom: 0;
+    max-width: 60vw;
+    max-height: 80vh;
+}
+
+.bottom-form {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.redirect {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.form-header {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.img-card-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-card {
+    width: 5vw;
+    border-radius: 50%;
+}
+
+.img-logout {
+    width: 3vw;
+}
+
+.top-buttons {
+    position: absolute;
+    top: 7vh;
+    right: 5vh;
+    display: flex;
+    align-items: center;
+}
+
+.user-welcome {
+    position: absolute;
+    top: 14vh;
+    left: 5vh;
+}
+
+.movie-card {
+    max-width: 45vh;    
+}
+
+.card-buttons {
+    position: relative;
+    top: -2.5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-text {
+    font-size: 15px;
+    text-align: justify;
+    z-index: 200;
+}
+
+.card {
+    border: 2px solid;
+    border-image: linear-gradient(to right, darkred , black) 8% round;
+    max-height: 81vh;
+}
+
+/* Header styles */
+
+#header-background {
+    position: fixed;
+    background-color: black;
+    top: 0;
+    left: 0;
+}
+
+.tech-slideshow {
+    height: 10vh;
+    width: 98.1vw;
+    margin: 5px 15px 5px 15px;
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .tech-slideshow > div {
+    height: 200px;
+    width: 2826px;
+    background-image: url(https://t4.ftcdn.net/jpg/00/11/55/73/360_F_11557382_KCYHEmhxBX5VjSrrqMg2xYOXRtqvW4pg.jpg);
+    position: absolute;
+    background-size: 550px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translate3d(0, 0, 0);
+  }
+  .tech-slideshow .mover-1 {
+    animation: moveSlideshow 12s linear infinite;
+  }
+  .tech-slideshow .mover-2 {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    background-position: 0 -200px;
+    animation: moveSlideshow 15s linear infinite;
+  }
+  
+  @keyframes moveSlideshow {
+    100% { 
+      transform: translateX(-30%);  
+    }
+  }
+
+  /* Footer Styles */
+  
+#footer {
+    color: darkred;
+    background-color: black;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    bottom: 0;
+    left: 0;
+}
+
+span {
+    text-shadow: 0px 2px 3px #555;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+#img-footer {
+    background-color: white;
+    width: 2vw;
+    margin: 0.25rem 2rem 0.25rem 0rem;
+    border-radius: 50%;
+}
