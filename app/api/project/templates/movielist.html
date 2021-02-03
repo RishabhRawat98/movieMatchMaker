@@ -9,20 +9,34 @@
   <div class="movie-lists container main-form">
     <div class="list-elements">
       <h3><b><u>Liked movies</u></b></h3>
+      {% for movie in liked_movies_list %}
+      <p>{{ movie }}</p>
+      {% endfor %}
       <p>Movie 1</p>
       <p>Movie 2</p>
       <p>Movie 3</p>
     </div>
     <div class="list-elements">
       <h3><b><u>Disliked movies</u></b></h3>
+      {% for movie in disliked_movies_list %}
+      <p>{{ movie }}</p>
+      {% endfor %}
       <p>Movie 1</p>
       <p>Movie 2</p>
       <p>Movie 3</p>
     </div>
     <div class="list-elements">
       <h3><b><u>Recommended movies</u></b></h3>
+      {% for movie in recommended_movies_list %}
+      <p>{{ movie }}</p>
+      {% endfor %}
       <p>Movie 1</p>
       <p>Movie 2</p>
+      <p>Movie 3</p>
+      <p>Movie 3</p>
+      <p>Movie 3</p>
+      <p>Movie 3</p>
+      <p>Movie 3</p>
       <p>Movie 3</p>
     </div>
   </div>

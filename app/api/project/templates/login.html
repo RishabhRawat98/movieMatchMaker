@@ -3,7 +3,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container main-form">
+<div id="login-container" class="container main-form">
     <div>  
       <p class="form-header"> Enter your details here:</p>
       {% with messages = get_flashed_messages() %}
@@ -21,7 +21,7 @@
         <input id="password" type="password" name="password" placeholder="Your password"/>
         <br>
         <div class="bottom-form">
-          <button variant="info" class='main-buttons'>Log in</button>
+          <button id="login-button" variant="info" class='main-buttons'>Log in</button>
         </div>
       </form>
         <div class="redirect">
