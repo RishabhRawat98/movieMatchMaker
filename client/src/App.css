@@ -98,6 +98,7 @@ body {
 
 .img-card {
     width: 5vw;
+    border-radius: 50%;
 }
 
 .img-logout {
@@ -119,13 +120,12 @@ body {
 }
 
 .movie-card {
-    max-width: 45vh;
-    
+    max-width: 45vh;    
 }
 
 .card-buttons {
     position: relative;
-    top: -3vh;
+    top: -2.5vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -137,12 +137,8 @@ body {
     z-index: 200;
 }
 
-.redbtn {
-    width: 15vh;
-    margin-bottom: 0;
-}
-
 .card {
-    border: 5px solid;
-    border-image: linear-gradient(to right, darkred , black) 1 round;
+    border: 2px solid;
+    border-image: linear-gradient(to right, darkred , black) 8% round;
+    max-height: 81vh;
 }
