@@ -27,15 +27,17 @@
         <input id="email" type="email" name="email" placeholder="Email"/>
         <br>
         <div class="bottom-form">
-          <button id="registerBtn" variant="info" type="submit" class="main-buttons">
+          <button id="registerBtn" variant="info" class="main-buttons">
             Submit details
           </button>
-          <div class="redirect">
-            <p>Already have an account? Sign in here:</p>
-            <a href="/login"></a><button class="main-buttons" variant="info">Login</button></a>
-          </div>
         </div>
       </form>
+        <div class="redirect">
+        <p>Already have an account? Sign in here:</p>
+        {% if not current_user.is_authenticated %}
+        <a href="{{ url_for('auth.login') }}"><button class="main-buttons" variant="info">Login</button></a>
+        {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}
