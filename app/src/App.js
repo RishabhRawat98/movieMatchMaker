@@ -1,29 +1,38 @@
-import React, { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-  Link,
-} from "react-router-dom";
-import { login, authFetch, useAuth, logout } from "./auth";
+import React from "react";
+import { Switch, Route, Link } from "react-router-dom";
+// import { authFetch } from "./auth";
+import { Header, Footer } from "./layout";
+import { PrivateRoute, LoggedOutRoute } from "./components";
+import { Welcome, Register, Login, MovieList, Swipe } from "./pages";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  const [logged] = useAuth();
+// const PrivateRoute = ({ component: Component, ...rest }) => {
+//   const [logged] = useAuth();
 
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        logged ? <Component {...props} /> : <Redirect to="/login" />
-      }
-    />
-  );
-};
+//   return (
+//     <Route
+//       {...rest}
+//       render={(props) =>
+//         logged ? <Component {...props} /> : <Redirect to="/login" />
+//       }
+//     />
+//   );
+// };
 
-export default function App() {
-  return (
-    <Router>
+class App extends React.Component {
+  state = {
+    isLoggedIn: false,
+
+    currentUser: {
+      id: 0,
+      username: " ",
+      email: " ",
+      password: " ",
+    },
+  };
+
+  render() {
+    return (
       <div>
         <nav>
           <ul>
@@ -38,119 +47,154 @@ export default function App() {
             </li>
           </ul>
         </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+        <Header />
         <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <PrivateRoute path="/secret" component={Secret} />
-          <Route path="/">
-            <Home />
-          </Route>
+          <LoggedOutRoute exact path="/" component={Welcome} />
+          <LoggedOutRoute path="/register" component={Register} />
+          <LoggedOutRoute path="/login" component={Login} />
+          <Route
+            path="/swipe"
+            username={this.state.currentUser.username}
+            component={Swipe}
+          />
+          <PrivateRoute
+            path="/movielist"
+            username={this.state.currentUser.username}
+            component={MovieList}
+          />
         </Switch>
+        <Footer />
       </div>
-    </Router>
-  );
+    );
+  }
 }
 
+export default App;
+
 function Home() {
-  // useEffect(() => {
-  //   fetch("/api")
-  //     .then((resp) => resp.json())
-  //     .then((resp) => console.log(resp));
-  // }, []);
+  useEffect(() => {
+    fetch("/api")
+      .then((resp) => resp.json())
+      .then((resp) => console.log(resp));
+  }, []);
   return <h2>Home</h2>;
 }
 
-function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+// function Login(props) {
+//   const history = useHistory();
+//   const [username, setUsername] = useState("");
+//   const [password, setPassword] = useState("");
 
-  const [logged] = useAuth();
+//   const [logged] = useAuth();
 
-  const onSubmitClick = (e) => {
-    e.preventDefault();
-    console.log("You pressed login");
-    let opts = {
-      username: username,
-      password: password,
-    };
-    console.log(opts);
-    fetch("/api/login", {
-      method: "post",
-      body: JSON.stringify(opts),
-    })
-      .then((r) => r.json())
-      .then((token) => {
-        if (token.access_token) {
-          login(token);
-          console.log(token);
-        } else {
-          console.log("Please type in correct username/password");
-        }
-      });
-  };
+//   const onSubmitClick = (e) => {
+//     // e.preventDefault();
+//     console.log("You pressed login");
+//     let opts = {
+//       username: username,
+//       password: password,
+//     };
+//     console.log(opts);
+//     fetch("/api/login", {
+//       method: "post",
+//       body: JSON.stringify(opts),
+//     })
+//       .then((r) => r.json())
+//       .then((token) => {
+//         if (token.access_token) {
+//           login(token);
+//           console.log(token);
+//         } else {
+//           console.log("Please type in correct username/password");
+//         }
+//       });
+//   };
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
+//   const handleUsernameChange = (e) => {
+//     setUsername(e.target.value);
+//   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+//   const handlePasswordChange = (e) => {
+//     setPassword(e.target.value);
+//   };
 
-  return (
-    <div>
-      <h2>Login</h2>
-      {!logged ? (
-        <form action="#">
-          <div>
-            <input
-              type="text"
-              placeholder="Email"
-              onChange={handleUsernameChange}
-              value={username}
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={handlePasswordChange}
-              value={password}
-            />
-          </div>
-          <button onClick={onSubmitClick} type="submit">
-            Login Now
-          </button>
-        </form>
-      ) : (
-        <button onClick={() => logout()}>Logout</button>
-      )}
-    </div>
-  );
-}
+//   const redirect = (e) => {
+//     e.preventDefault();
+//     history.push("/register");
+//   };
 
-function Secret() {
-  const [message, setMessage] = useState("");
+//   return (
+//       <div className="container main-form">
+//         <div>
+//           <p className="form-header"> Enter your details here:</p>
+//           <Form action="/secret">
+//             <Form.Label>Email:</Form.Label>
+//             <Form.Control
+//               id="email"
+//               type="email"
+//               name="email"
+//               onChange={handleUsernameChange}
+//               value={username}
+//               placeholder="Your email"
+//             />
+//             <br />
+//             <Form.Label>Password:</Form.Label>
+//             <Form.Control
+//               id="password"
+//               type="password"
+//               name="password"
+//               onChange={handlePasswordChange}
+//               value={password}
+//               placeholder="Your password"
+//             />
+//             <br />
+//             <div className="bottom-form">
+//               <Button
+//                 variant="info"
+//                 type="submit"
+//                 onClick={onSubmitClick}
+//                 type="submit"
+//               >
+//                 Log in
+//               </Button>
+//               <button onClick={() => logout()}>Logout</button>
+//               <div className="redirect">
+//                 <p>Don't have an account? Sign up here:</p>
+//                 <Button
+//                   type="submit"
+//                   className="main-buttons"
+//                   variant="info"
+//                   onClick={redirect}
+//                 >
+//                   Register
+//                 </Button>
+//               </div>
+//             </div>
+//           </Form>
+//         </div>
+//         <p id="login"></p>
+//       </div>
+//   );
+// }
 
-  useEffect(() => {
-    authFetch("/api/protected")
-      .then((response) => {
-        if (response.status === 401) {
-          setMessage("Sorry you aren't authorized!");
-          return null;
-        }
-        return response.json();
-      })
-      .then((response) => {
-        if (response && response.message) {
-          setMessage(response.message);
-        }
-      });
-  }, []);
+// function Secret() {
+//   const [message, setMessage] = useState("");
 
-  return <h2>Secret: test {message}</h2>;
-}
+//   useEffect(() => {
+//     authFetch("/api/protected")
+//       .then((response) => {
+//         if (response.status === 401) {
+//           setMessage("Sorry you aren't authorized!");
+//           return null;
+//         }
+//         return response.json();
+//       })
+//       .then((response) => {
+//         if (response && response.message) {
+//           setMessage(response.message);
+//         }
+//       });
+//   }, []);
+
+//   return <h2>Secret: test {message}</h2>;
+// }
