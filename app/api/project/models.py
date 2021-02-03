@@ -1,5 +1,5 @@
 # models.py
-from numpy import genfromtxt
+# from numpy import genfromtxt
 from time import time
 from datetime import datetime
 from sqlalchemy import Column, Integer, Float, Date, String, VARCHAR
@@ -39,7 +39,7 @@ class Movdb(Base):
 engine = create_engine('sqlite:///plswork.db')
 Base.metadata.create_all(engine)
 file_name = 'Use.csv'
-df = pd.read_csv(file_name)
+# df = pd.read_csv(file_name)
 df.to_sql(con=engine, index_label='id', name=Movdb.__tablename__, if_exists='replace')
 Session = sessionmaker(bind=engine)
 session = Session()
