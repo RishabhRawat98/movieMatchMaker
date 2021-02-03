@@ -215,3 +215,19 @@ span {
     margin: 0.25rem 2rem 0.25rem 0rem;
     border-radius: 50%;
 }
+
+/* Movie Lists */
+
+.movie-lists {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    justify-content: flex-start;
+}
+
+.list-elements {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    justify-content: flex-start;
+}

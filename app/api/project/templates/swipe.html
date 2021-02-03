@@ -1,0 +1,24 @@
+<!-- templates/profile.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="top-buttons">
+  <a href="{{ url_for('main.movielist') }}"><Button class="main-buttons" variant="info">See all</Button></a>
+  <a href="{{ url_for('auth.logout') }}"><input type="image" src="{{ url_for('static', filename='logout.png') }}" class="img-logout"/></a>
+</div>
+<p class="form-header user-welcome">Hi {{ name }}, welcome back!</p>
+<div class="container movie-card">           
+  <div id="{{ movieId }}" class="card">
+      <img src="{{ movieImageURL }}" class="card-img-top" alt="Movie Photo"/>
+      <div class="card-body">
+          <h5 class="card-title">{{ movieTitle }}</h5>
+          <p class="card-text">{{ movieBrief }}</p>
+          <div class="card-buttons">
+            <input type="image" class="img-card" src="https://i.pinimg.com/originals/7b/dd/1b/7bdd1bc7db7fd48025d4e39a0e2f0fd8.jpg" />                                
+            <input type="image" class="img-card" src="https://img1.pnghut.com/9/21/9/9yZVSR2v4y/area-apple-icon-image-format-iconfinder-ico-button.jpg" />
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
