@@ -28,8 +28,8 @@ body {
 }
 
 #title { 
-    /* position: relative; */
-    /* left: -12.5vw; */
+    position: relative;
+    left: -12.5vw;
     font-family: 'Londrina Solid', cursive;
     font-size: 10rem;
     width: 100vw;
@@ -333,13 +333,13 @@ h3 {
 
     #title {
         position: relative;
-        left: -3vw;
+        left: -7vw;
         font-size: 4.5rem;
     }
 
     .redirect {
         position: relative;
-        top: -15vh;
+        top: -10vh;
         left: -1vw;
         display: flex;
         flex-direction: column;
@@ -349,7 +349,7 @@ h3 {
 
     .redirect > p {
         position: relative;
-        top: 9vh;
+        top: 7vh;
         left: -1vw;
     }
 
@@ -366,5 +366,18 @@ h3 {
         position: relative;
         top: -4vh;
         left: -2vw;
+    }
+}
+
+@media (min-width: 600px) {
+    #login-container {
+        max-height: 60vh;
+        max-width: 30vw;
+    }
+
+    #login-elements {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
 }
