@@ -22,3 +22,12 @@ genredb = pd.DataFrame(film_genres, columns = ['genre1', 'genre2', 'genre3', 'ge
 resultdb = pd.concat([almostdb, genredb], axis=1, join="inner")
 resultdb.to_csv('Moviedb.csv')
 # print(resultdb)
+
+# print(resultdb)
+unclean_data = pd.read_csv('Moviedb.csv')
+unclean_data.rename( columns={'Unnamed: 0':'Movlst_id'}, inplace=True )
+
+more_fields = [ 'genre3', 'genre4', 'gnere5', 'Movlst_id', 'popularity']
+unclean_data = unclean_data.drop(more_fields, axis =1 )
+unclean_data.to_csv('Use.csv')
+print(unclean_data)
