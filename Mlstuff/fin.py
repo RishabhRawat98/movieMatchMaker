@@ -1,6 +1,6 @@
 import random
 from cleanengine import clean_Engine
-
+from .sec import MovieData
 
 
 @app.route('/')                                                           #you want try/except because initally the user has no Recomended list
@@ -8,7 +8,7 @@ def homepage():
     try:
         checkRecList = UserRecList.query.all(1)                           #This basically should add id from the recomended list t
         mov_id = checkRecList.movie_id
-        realMovInfo = Moviedata.query.all(mov_id)                         #This uses the movie id to get the movie from Moviedata
+        realMovInfo = Moviedata.query.get(mov_id)                         #This uses the movie id to get the movie from Moviedata
         mov_dic = {                                                       #This dicitonary will be used to render the movieinfo
             id = realMovInfo.id
             title = realMovInfo.title
@@ -19,7 +19,7 @@ def homepage():
         }
     except NameError:
         x = random.randint(0,90)
-        realMovInfo = Moviedata.query.all(x)
+        realMovInfo = Moviedata.query.get(x)
         mov_dic = {
             id = realMovInfo.id
             title = realMovInfo.title
