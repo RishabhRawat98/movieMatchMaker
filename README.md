@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/Licence-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-![](flaskblog/static/Movie-Matchmaker-demo.gif)
+![](flaskmov/static/Movie-Matchmaker-demo.gif)
 
 Movie Matchmaker is an app that allows users to create an account and like or dislike movie cards from a database. Users can afterwards see a list of their liked and disliked movies,  as well as a list of recommended movies based on their preferences
 
