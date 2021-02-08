@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Hi, {{ current_user.username }}</h1>
+<h3><b><u>Liked movies</u></b></h3>
+{% for movie in liked_movies_list %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{ movie }}</h5>
+      <p class="card-text">{{ movie.overview }}</p>
+      <p >{{ movie.release_date }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+<h3><b><u>Disliked movies</u></b></h3>
+{% for movie in disliked_movies_list %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{movie.movieImgURL}}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{ movie.movieTitle }}</h5>
+      <p class="card-text">{{ movie.movieBrief }}</p>
+      <p >{{ movie.movieReleaseDate }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Hi, {{ current_user.username }}</h1>
+<div class="row">
+<div class="col-md-8">
+  <div class="container movie-card">           
+    <div id="{{ movieId }}" class="card">
+        <img src="https://image.tmdb.org/t/p/w500{{movieImgURL}}" class="card-img-top" alt="Movie Photo"/>
+    </div>
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="card-body">
+    <h5 class="card-title">{{ movieTitle }}</h5>
+    <p class="card-text">{{ movieBrief }}</p>
+    <p >{{ movieReleaseDate }}</p>         
+      <div class="card-buttons">
+        <form id="form" action="/home" method="post">
+          <div class="panel-body">
+              <input name="bro_button" type="submit" value="No">
+          </div>
+          <div class="panel-body">
+              <input name="bro_button" type="submit" value="yes">
+          </div>
+       </form>
+      </div>
+  </div>
+</div>
+</div>
+{% endblock content %}
