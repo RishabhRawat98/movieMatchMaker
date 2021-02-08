@@ -1,10 +1,10 @@
 from flask import render_template, url_for, flash, redirect, request, session, jsonify
-from flaskblog import app, db, bcrypt
-from flaskblog.forms import RegistrationForm, LoginForm
-from flaskblog.models import User, UserWatchlist, DontWatchlist, RecomendedList, Moviedata
+from flaskmov import app, db, bcrypt
+from flaskmov.forms import RegistrationForm, LoginForm
+from flaskmov.models import User, UserWatchlist, DontWatchlist, RecomendedList, Moviedata
 from flask_login import login_user, current_user, logout_user, login_required
 import random
-from flaskblog.cleanengine import clean_Engine
+from flaskmov.cleanengine import clean_Engine
 a = None
 b = None
 rec_ls = []
