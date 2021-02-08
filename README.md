@@ -55,7 +55,7 @@ Everytime a new functioning feature was completed, its branch was merged to the 
 
 ## Code Snippets
 
-Method of fetching user data from the SQL database and providing users with a token to be able to access the app.
+The machine learning function called clean engine.
 
 ```Python
 def clean_Engine(lst_titles):
