@@ -58,37 +58,84 @@ Everytime a new functioning feature was completed, its branch was merged to the 
 Method of fetching user data from the SQL database and providing users with a token to be able to access the app.
 
 ```Python
-@app.route("/home")
-def home():
-    try:
-        checkRecList = RecomendedList.query.get(1) # This basically should add id from the recomended list.
-        mov_id = checkRecList.movie_id
-        realMovInfo = Moviedata.query.get(mov_id)
-                                                   # This uses the movie id to get the movie from Moviedata.
-        mov_dic = {                                # This dicitonary will be used to render the movieinfo.
-            id: realMovInfo.id,
-            "title": realMovInfo.title,
-            "poster": realMovInfo.poster_path,
-            "rel": realMovInfo.release_date,
-            "desc": realMovInfo.overview,
-            "genre": realMovInfo.genre1,
-        }
-    except AttributeError:
-        x = random.randint(0,90)
-        realMovInfo = Moviedata.query.get(x)
-        mov_dic = {                                # This dicitonary will be used to render the movieinfo.
-            "id": realMovInfo.id,
-            "title": realMovInfo.title,
-            "poster": realMovInfo.poster_path,
-            "rel": realMovInfo.release_date,
-            "desc": realMovInfo.overview,
-            "genre": realMovInfo.genre1,
-        }
-    return render_template('home.html', name=current_user.username,  
-                                        movieTitle=mov_dic['title'], 
-                                        movieImgURL=mov_dic['poster'], 
-                                        movieReleaseDate=mov_dic['rel'], 
-                                        movieBrief=mov_dic['desc'])
+def clean_Engine(lst_titles):
+    unclean_data = pd.read_csv('D:\\AuthWorking\\06-Login-Auth\\flaskblog\\Moviedb.csv') #There is a problme withe the csv, genreates unnmed: 0 column
+    unclean_data.rename( columns={'Unnamed: 0':'Movlst_id'}, inplace=True )
+
+    genre_columns = ['title', 'genre1', 'genre2', 'genre3', 'genre4']
+    clean_data = unclean_data.fillna(0)
+
+
+    def combiner(data):
+        mov_combat = []
+        for i in range(0, data.shape[0]):
+            mov_combat.append(data['title'][i]+' '+str(data['genre1'][i])+' '+str(data['genre2'][i])
+                          +' '+str(data['genre3'][i])+' '+str(data['genre4'][i]))
+        return mov_combat
+
+    movdb = clean_data.drop('gnere5', axis=1) #Column not needed
+    movdb['combat'] = combiner(clean_data)
+
+    cm = CountVectorizer().fit_transform(movdb['combat']) #Turns values in the combat column into vecotrs. Now we can do math 
+    cs = cosine_similarity(cm)
+
+    new_n = []
+    def id_getter():
+        for mindex, mtitle in enumerate(lst_titles):
+            get_movid = movdb[movdb.title == mtitle]['Movlst_id'].values[0]
+            new_n.append(get_movid)
+        return new_n
+    
+    id_getter()
+
+    emp = []
+    def lets_work():
+        for num in new_n:
+            sc = list(enumerate(cs[num])) 
+            emp.append(sc)
+        
+        return emp
+    lets_work()
+
+    kuro = []
+    def get_kuro():
+        for i in range(len(emp)):
+            list1,list2 = zip(*emp[i])
+            kuro.append(list2)
+        return kuro
+    get_kuro()
+
+    shiro = pd.DataFrame(kuro[1])
+    def get_shiro():
+        for i in range(len(kuro)):
+            shiro['col{}'.format(i)] = pd.DataFrame(kuro[i])
+        return shiro
+
+    (get_shiro())
+
+    yoo_shiro = shiro.drop(0,axis=1) #dropping a useless column
+    yoo_shiro['mean'] = yoo_shiro.mean(axis=1)
+    eh_shiro = pd.DataFrame(yoo_shiro['mean']) #new dataframe with the only column as mean of the pervious columns
+    eh_shiro['id'] = eh_shiro.index #creates a new column and gives each movie an id
+
+    records = eh_shiro.to_records(index=False) 
+    result = list(records)
+    sorted_for_life = sorted(result, key = lambda x:x [0], reverse = True) #Uses the built in mergesort algo, sorts form index 0 which is the mean recomended socre.
+
+    rec_tit = []
+    def final_reco():
+        j = 0
+
+        for item in sorted_for_life:
+            movie_title = movdb[movdb.Movlst_id == item[1]]['title'].values[0]
+            if movie_title in lst_titles:
+                continue
+            else:
+                rec_tit.append(movie_title)
+                j = j + 1
+                if j > 15:
+                    break
+        return rec_tit
 ```
 
 ## Wins & Challenges
